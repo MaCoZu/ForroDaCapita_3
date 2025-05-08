@@ -13,5 +13,14 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), react(), alpinejs()],
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Copy admin files to dist
+      assetsInlineLimit: 0,
+      rollupOptions: {
+        output: {
+          assetFileNames: 'assets/[name][extname]'
+        }
+      }
+    }
   }
 });

@@ -4,6 +4,9 @@ dist/
 # generated types
 .astro/
 
+# pages
+pages/deco.astro
+
 # dependencies
 node_modules/
 
