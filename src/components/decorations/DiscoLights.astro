@@ -1,0 +1,98 @@
+---
+import bar from "../../assets/images/pageimages/pa58_images/BrushMask_04.svg";
+---
+
+<div class="disco-container">
+    <img
+        src={bar.src}
+        alt="bar"
+        class="disco-image"
+    />
+
+    <div class="disco-lights">
+        <div class="light-track">
+            <div class="light pink"></div>
+        </div>
+        <div class="light-track delay">
+            <div class="light blue"></div>
+        </div>
+    </div>
+</div>
+
+<style lang="scss">
+    .disco-container {
+        position: relative;
+        width: 60%;
+        aspect-ratio: 5 / 2;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    .disco-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        mask-image: url("../../assets/images/pageimages/pa58_images/BrushMask_04.svg");
+        mask-size: cover;
+        mask-repeat: no-repeat;
+        mask-position: center;
+    }
+
+    .disco-lights {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        // fallback mask for Safari if needed
+        mask-image: url("../../assets/images/pageimages/pa58_images/BrushMask_04.svg");
+        mask-repeat: no-repeat;
+        mask-size: cover;
+        mask-position: center;
+    }
+
+    // === ROTATING TRACK ===
+    .light-track {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1px;
+        height: 1px;
+        transform-origin: center;
+        animation: rotate-track 18s linear infinite;
+    }
+
+    .light-track.delay {
+        animation-delay: 1s;
+    }
+
+    .light {
+        position: absolute;
+        left: -180px; // horizontal radius
+        top: -20px; // vertical radius
+        width: 40px;
+        height: 25px;
+        border-radius: 50%;
+        filter: blur(10px);
+        mix-blend-mode: screen;
+        opacity: 0.6;
+    }
+
+    .pink {
+        background: radial-gradient(circle, #f0f, transparent 70%);
+    }
+
+    .blue {
+        background: radial-gradient(circle, #0ff, transparent 70%);
+    }
+
+    // === OVAL MOTION ===
+    @keyframes rotate-track {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>

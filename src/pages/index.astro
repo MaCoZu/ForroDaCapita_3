@@ -1,11 +1,105 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import FullPost from "../components/FullPost.astro";
+import Layout from "../layouts/Layout.astro";
+import Divider from "../components/Divider.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { Image } from "astro:assets";
+import MapImage from "../assets/images/pageimages/map.png";
+import Sign from "../assets/images/pageimages/pa58_images/sign.jpg";
+import Path from "../assets/images/pageimages/pa58_images/path.jpg";
+import Door from "../assets/images/pageimages/pa58_images/door.jpg";
+
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("news"))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()) // sort by latest
+    .slice(0, 1);
+
+const [latest, ...rest] = posts;
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Forró da Capita | News">
+    <div class="flex flex-col col-span-1 md:flex-row md:mt-15 mt-5">
+        <div class="md:px-0 order-1">
+            <!-- Headline -->
+            <div class="md:mb-10 mb-0 border-spacing-4">
+                <h1 class="text-xl font-merri text-slate-600">
+                    We dance <span class="text-violet-900 font-semibold"
+                        >Forró</span
+                    >.
+                </h1>
+
+                <h1 class="text-xl font-merri text-slate-600">
+                    Every <span class="text-violet-900 font-semibold"
+                        >Tuesday</span
+                    > from
+                    <span class="text-violet-900 font-semibold"
+                        >19:30 - 22:00</span
+                    > at
+                    <span class="text-violet-900 font-semibold"
+                        >Prinzenalle 58</span
+                    >, 13359 Berlin
+                </h1>
+            </div>
+
+            <Divider text="News" className="lg:hidden py-5 flex" />
+
+            <!-- Post  -->
+            <div class="flex flex-col lg:flex-row order-2">
+                <div class="flex-1 min-w-0 pr-18 mr-20">
+                    <Divider
+                        text="News"
+                        className="hidden lg:relative lg:flex md:pb-5"
+                    />
+
+                    <div id="news" class="scroll-mt-[150px]">
+                        <div class="md:h-[45vh] overflow-y-auto">
+                            <FullPost post={latest} />
+                        </div>
+                    </div>
+                </div>
+
+                <Divider text="Map" className="lg:hidden flex py-5 " />
+
+                <!-- Map  -->
+                <div class="lg:-mt-10 lg:w-1/4 group order-3 mb-4">
+                    <Image
+                        src={MapImage}
+                        alt="Location map"
+                        class="lg:transition-transform lg:duration-500 lg:group-hover:scale-145 lg:origin-right"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <Divider text="How to find us." className="py-10 flex" />
+
+    <div class="md:mb-5 mb-0">
+        <h1 class="text-xl font-merri text-slate-600">
+            Once in the first backyard, this is the way to go.
+        </h1>
+
+      
+    </div>
+
+    <div class="max-w-full flex flex-col md:flex-row mt-10 gap-3">
+        <Image
+            src={Sign}
+            alt="Signs"
+            class="w-full md:flex-1 max-w-full rounded-sm aspect-square hover:scale-105 transition-all object-cover"
+        />
+        <Image
+            src={Path}
+            alt="Path"
+            class="w-full md:flex-1 max-w-full rounded-sm aspect-square hover:scale-105 transition-all object-cover"
+        />
+        <Image
+            src={Door}
+            alt="Door"
+            class="w-full md:flex-1 max-w-full rounded-sm aspect-square hover:scale-105 transition-all object-cover"
+        />
+    </div>
+
+   
 </Layout>

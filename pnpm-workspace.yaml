@@ -1,0 +1,7 @@
+onlyBuiltDependencies:
+  - '@ampproject/toolbox-optimizer'
+  - better-sqlite3
+  - core-js
+  - es5-ext
+  - esbuild
+  - sharp
