@@ -3,5 +3,5 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "18"  # Must be 16 or 18
+  NODE_VERSION = "16"  # Must be 16 or 18
   PNPM_VERSION = "10"   # Match your local version

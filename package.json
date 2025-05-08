@@ -3,14 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "generate:types": "npx @tinacms/cli@1.9.6 schema:types",
-    "prebuild": "pnpm generate:types",
-    "build": "npx @tinacms/cli@1.9.6 build && astro build",
-
-
-    "dev": "pnpm run prebuild && tinacms dev -c \"astro dev\"",
+    "dev": "tinacms dev -c \"astro dev\"",
+    "build": "tinacms build && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "generate:types": "tinacms schema:types"
   },
   "pnpm": {
     "allowedDeprecatedVersions": {
@@ -49,7 +45,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "@tinacms/cli": "^1.9.5",
+    "@tinacms/cli": "^1.9.6",
     "@types/node": "^22.14.1",
     "@typescript-eslint/parser": "^8.31.1",
     "eslint": "^9.26.0",
