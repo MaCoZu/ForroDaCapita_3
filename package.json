@@ -3,10 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "tinacms dev -c \"astro dev\"",
-    "build": "tinacms build && astro build",
-    "preview": "astro preview",
-    "generate:types": "tinacms schema:types"
+    "build": "astro build", 
+    "dev": "astro dev",
+    "tina-dev": "tinacms dev -c \"astro dev\"", 
+    "generate:types": "tinacms schema:types" 
   },
   "pnpm": {
     "allowedDeprecatedVersions": {
