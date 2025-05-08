@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import bar from "../assets/images/pageimages/pa58_images/BrushMask_04.svg";
+const adminUrl = import.meta.env.DEV ? "http://localhost:4001/admin" : "/admin";
 ---
 
 <nav class="top-0 md:h-40 md:mb-2">
@@ -197,7 +198,7 @@ import bar from "../assets/images/pageimages/pa58_images/BrushMask_04.svg";
                 </a>
                 <a href="/pa58" class="btn"> PA58</a>
                 <!-- <a href="/deco" class="btn"> Deco</a> -->
-                <a href="http://localhost:4001" class="btn">Admin</a>
+                <a href={adminUrl} class="btn">Admin</a>
               </div>
             </div>
           </div>
