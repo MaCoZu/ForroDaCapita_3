@@ -7,7 +7,8 @@ import alpinejs from '@astrojs/alpinejs';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://www.forrodacapita.de',
+  output: 'static',
 
   integrations: [mdx(), sitemap(), react(), alpinejs()],
   vite: {
